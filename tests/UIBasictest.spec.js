@@ -18,6 +18,14 @@ test.only("This is the First test", async ({browser})=>
   const context = await browser.newContext(); // will open a incognito/fresh browser
   const page = await context.newPage(); // open a new page
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+  console.log(await page.title());
+  await page.locator('#username').type("Imran Sarker");
+  await page.locator("[type = 'password']").type("Imran004");
+  await page.locator("[type = 'submit']").click();
+  console.log (await page.locator("[style* = 'block']").textContent());
+  await expect(page.locator("[style* = 'block']")).toContainText('Incorrect');
+
+
 });
 
 test("page test", async ({page})=>
